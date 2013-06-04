@@ -8,10 +8,15 @@ import android.view.Menu;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import com.gpeal.rpics.adapters.ListItemAdapter;
 import com.gpeal.rpics.utils.Utils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends Activity {
     ArrayList<ListItem> leftItems = new ArrayList<ListItem>();
@@ -60,9 +65,13 @@ public class MainActivity extends Activity {
         rightListView.setAdapter(rightAdapter);
     }
 
-    private class LoadSubredditTask extends AsyncTask<String, Void, String> {
+    public void reloadItems(ArrayList<ListItem> items) {
+        Log.i(Utils.TAG, "Reloading " + items.size() + " items");
+    }
+
+    private class LoadSubredditTask extends AsyncTask<String, Void, ArrayList<ListItem>> {
         @Override
-        protected String doInBackground(String... subreddits) {
+        protected ArrayList<ListItem> doInBackground(String... subreddits) {
             String subreddit = subreddits[0];
             String url = subreddit.equals("") ? "http://reddit.com/.json" : "http://reddit.com/r/" + subreddit + ".json";
             String data;
@@ -73,8 +82,35 @@ public class MainActivity extends Activity {
                 // TODO: handle this
             }
             data = Utils.httpGet(url);
-            Log.i(Utils.TAG, "Reddit Data: " + data);
-            return data;
+            try {
+                JSONObject posts = new JSONObject(data);
+                return parseRedditPosts(posts);
+            }
+            catch(JSONException e) {
+                Log.e(Utils.TAG, "Failed to parse data: " + e.getMessage());
+                cancel(true);
+            }
+            return new ArrayList<ListItem>();
+        }
+
+        private ArrayList<ListItem> parseRedditPosts(JSONObject subreddit)
+            throws JSONException, NullPointerException {
+            ArrayList<ListItem> items = new ArrayList<ListItem>();
+            JSONArray posts;
+            posts = subreddit.getJSONObject("data").getJSONArray("children");
+
+            for (int i = 0; i < posts.length(); i++) {
+                JSONObject post = posts.getJSONObject(i).getJSONObject("data");
+                if (Utils.isImage(post.getString("url"))) {
+                    items.add(new ListItem(post.getString("url"), post.getString("title")));
+                }
+            }
+            return items;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<ListItem> result) {
+            reloadItems(result);
         }
     }
 
