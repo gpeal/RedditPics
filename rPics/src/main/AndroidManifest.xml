@@ -3,6 +3,7 @@
     package="com.gpeal.rpics"
     android:versionCode="1"
     android:versionName="1.0" >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Include next permission if you want to allow UIL to cache images on SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

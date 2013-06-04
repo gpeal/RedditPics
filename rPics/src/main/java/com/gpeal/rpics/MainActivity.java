@@ -1,16 +1,19 @@
 package com.gpeal.rpics;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 import com.gpeal.rpics.adapters.ListItemAdapter;
+import com.gpeal.rpics.utils.Utils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class MainActivity extends Activity {
-
     ArrayList<ListItem> leftItems = new ArrayList<ListItem>();
     ArrayList<ListItem> rightItems = new ArrayList<ListItem>();
     ListView leftListView;
@@ -30,6 +33,7 @@ public class MainActivity extends Activity {
         leftListView = (ListView)findViewById(R.id.dual_list_view_left);
         rightListView = (ListView)findViewById(R.id.dual_list_view_right);
         loadItems();
+        new LoadSubredditTask().execute("");
     }
 
 
@@ -54,6 +58,24 @@ public class MainActivity extends Activity {
 
         leftListView.setAdapter(leftAdapter);
         rightListView.setAdapter(rightAdapter);
+    }
+
+    private class LoadSubredditTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... subreddits) {
+            String subreddit = subreddits[0];
+            String url = subreddit.equals("") ? "http://reddit.com/.json" : "http://reddit.com/r/" + subreddit + ".json";
+            String data;
+
+            Log.i(Utils.TAG, "doInBackground");
+
+            if (!Utils.isNetworkAvailable(MainActivity.this)) {
+                // TODO: handle this
+            }
+            data = Utils.httpGet(url);
+            Log.i(Utils.TAG, "Reddit Data: " + data);
+            return data;
+        }
     }
 
 
