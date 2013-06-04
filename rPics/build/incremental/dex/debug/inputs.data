@@ -1,0 +1,18 @@
+# incremental data. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1370331617000 122698 eee81e43531ce82db1781c5a8b27781ca384eede /Users/gabriel/Development/Android/rPicsProject/rPics/libs/universal-image-loader-1.8.4.jar
+1370369263000 544 c9200dcb8064a96dd26b26645a333b77b34d585b /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$dimen.class
+1370369263000 398 c0b4ce445910a2843e495d2362795d29d5bc9ae3 /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$drawable.class
+1370370695000 427 1f81c8f92c85841ef92ab002a30d9fb21da279bc /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$layout.class
+1370370695000 463 d454bb36d18e5aecbf715b6194ced448267d16c2 /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$string.class
+1370370452000 2754 34f1e0fc2ab869fafc3e8d08e4939e420b5e7f37 /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/MainActivity.class
+1370270345000 484258 bd6479f5dd592790607e0504e66e0f31c2b4d308 /Users/gabriel/Development/Android/rPicsProject/rPics/libs/android-support-v4.jar
+1370370736000 2368 40de8cf87c46405e9ee71245896164e1cf014d44 /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/adapters/ListItemAdapter.class
+1370370695000 422 914af15bab9dbc01f5a4a9681a6c2f586302169d /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$style.class
+1370370695000 647 d3568027e5150516e04527f4ec305d4d2c783f53 /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R.class
+1370370695000 379 13889be82d9be2c53aafaf04cae175717ac8476e /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$menu.class
+1370369263000 436 5883bf40bb66c91767e49cc731edcfc780a5b967 /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/ListItem.class
+1370369263000 331 60ce0c07a55f80f8f48c6af14f0fc0e4e302a18d /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$attr.class
+1370369263000 339 c29ac0c93771717076f880ebafeb65d3f53e082c /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/BuildConfig.class
+1370370695000 539 a157ca6e91a69463f593f1c4775775bf9aaea85b /Users/gabriel/Development/Android/rPicsProject/rPics/build/classes/debug/com/gpeal/rpics/R$id.class
