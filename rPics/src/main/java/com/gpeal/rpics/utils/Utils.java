@@ -69,7 +69,7 @@ public class Utils {
             return true;
         }
         else {
-            Log.i(TAG, "Non-image format: (" + extension + ")");
+            // Log.i(TAG, "Non-image format: (" + extension + ")");
             return false;
         }
     }

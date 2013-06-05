@@ -67,16 +67,31 @@ public class MainActivity extends Activity {
 
     public void reloadItems(ArrayList<ListItem> items) {
         Log.i(Utils.TAG, "Reloading " + items.size() + " items");
+        if (items.size() == 0) {
+            return;
+        }
+
+        leftAdapter.clear();
+        rightAdapter.clear();
+        for (int i = 0; i < items.size(); i++) {
+            ListItem newItem = new ListItem(items.get(i).url, items.get(i).title);
+            if (i % 2 == 0) {
+                leftAdapter.add(newItem);
+            }
+            else {
+                rightAdapter.add(newItem);
+            }
+        }
+        leftAdapter.notifyDataSetChanged();
+        rightAdapter.notifyDataSetChanged();
     }
 
     private class LoadSubredditTask extends AsyncTask<String, Void, ArrayList<ListItem>> {
         @Override
         protected ArrayList<ListItem> doInBackground(String... subreddits) {
             String subreddit = subreddits[0];
-            String url = subreddit.equals("") ? "http://reddit.com/.json" : "http://reddit.com/r/" + subreddit + ".json";
+            String url = subreddit.equals("") ? "http://reddit.com/.json?limit=100" : "http://reddit.com/r/" + subreddit + ".json?limit=100";
             String data;
-
-            Log.i(Utils.TAG, "doInBackground");
 
             if (!Utils.isNetworkAvailable(MainActivity.this)) {
                 // TODO: handle this
