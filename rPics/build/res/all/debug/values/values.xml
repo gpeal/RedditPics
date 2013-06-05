@@ -8,7 +8,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="app_name">rPics</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="menu_search">subreddit</string>
 
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
